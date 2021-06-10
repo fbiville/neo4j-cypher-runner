@@ -47,7 +47,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 		
 		const query = document.getText();
-		const session = driver.session();
+		const session = driver.session({ database: selectedDb.database });
 		try {
 			const json: string = await session.writeTransaction(async tx => {
 				const result = await tx.run(query);
